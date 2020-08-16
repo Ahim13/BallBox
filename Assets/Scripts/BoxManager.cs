@@ -30,6 +30,8 @@ public class BoxManager : MonoBehaviour
 	{
 		StartCoroutine(Scale());
 		_randomAngle = new Vector3(Random.Range(0, 90f), Random.Range(0, 90f), Random.Range(0, 90f));
+		
+		SetupBoxSize();
 	}
 
 	private void Update()
@@ -88,6 +90,20 @@ public class BoxManager : MonoBehaviour
 			else
 				yield return null;
 		}
+	}
+	
+	private void SetupBoxSize()
+	{
+		var sphereLocalScale = _sphere.transform.localScale;
+		_sliderX.minValue = sphereLocalScale.x;
+		_sliderX.maxValue = _sliderX.minValue + 20;
+		_sliderX.value = _sliderX.maxValue / 2f;
+		_sliderY.minValue = sphereLocalScale.x;
+		_sliderY.maxValue = _sliderY.minValue + 20;
+		_sliderY.value = _sliderX.maxValue / 2f;
+		_sliderZ.minValue = sphereLocalScale.x;
+		_sliderZ.maxValue = _sliderZ.minValue + 20;
+		_sliderZ.value = _sliderX.maxValue / 2f;
 	}
 
 	public void SetBoxScaleX(float x)
